@@ -71,17 +71,122 @@ function gameWinner(){
 let playerCount = 0;
 let computerCount = 0;  
 
+/*
 function game(){
     console.log('This is a game of Rock, Papers, Scissors against the computer');
   
     for (let i = 0; i < 5; i++){
         var round = i+1;
         console.log('Round ' + round);
+        currentRound.textContent= 'Round ' + round;
+        
         var playerSelection = prompt('Choose Rock, Paper or Scissors').toLowerCase();
-        const computerSelection = getComputerChoice();
+        
+        //playerSelection = playerSelected;
+        
+        const computerSelection = getComputerChoice();        
+        
+        roundResult.textContent = playRound(playerSelection, computerSelection, playerCount, computerCount);
+        
         console.log(playRound(playerSelection, computerSelection, playerCount, computerCount));
+        
+        userScore.textContent = `USER: ${playerCount}`;
+        
+        PCScore.textContent = `PC: ${computerCount}`;
     }
+    gameResult.textContent = gameWinner();
     console.log(gameWinner());
 }
+*/
 
-game();
+let round = 0;
+
+function game(playerSelected){
+
+
+    //INICIALIZACION
+    currentRound.textContent = 'Round ' + (round+1);
+
+
+    //SELECCION USUARIO
+    let playerSelection = playerSelected;
+
+    //SELECCION PC
+    const computerSelection = getComputerChoice();
+
+    //EJECUCION RONDA
+    notifier.textContent = playRound(playerSelection, computerSelection, playerCount, computerCount);
+
+    //MODIFICACION ELEMENTOS
+    userScore.textContent = `USER: ${playerCount}`;
+    PCScore.textContent = `PC: ${computerCount}`;
+    round++;
+
+    //ENDGAME
+    if(playerCount === 5 || computerCount === 5 ){
+        notifier.textContent = gameWinner();
+        playerRock.disabled = true;
+        playerPaper.disabled = true;
+        playerScissors.disabled = true;
+        return;
+    }
+
+}
+
+
+//Interactive Buttons
+
+let playerSelected = '';
+
+const playerRock = document.querySelector('#rock');
+playerRock.addEventListener("click", () =>{
+    let playerSelected = playerRock.id;
+    game(playerSelected);
+});
+
+const playerPaper = document.querySelector('#paper');
+playerPaper.addEventListener("click", () =>{
+    let playerSelected = playerPaper.id;
+    game(playerSelected);
+});
+
+const playerScissors = document.querySelector('#scissors');
+playerScissors.addEventListener("click", () =>{
+    let playerSelected = playerScissors.id;
+    game(playerSelected);
+});
+
+
+
+
+//Notifications System
+const notifications = document.querySelector('.notifications')
+
+//Round Number
+let currentRound = document.createElement('p');
+currentRound.textContent= "";
+notifications.appendChild(currentRound);
+
+//Notifier
+const notifier = document.querySelector('#notifier');
+
+//Round Result
+//let roundResult = document.createElement('p');
+//roundResult.textContent = "";
+//notifications.appendChild(roundResult);
+
+//Game Result
+//let gameResult = document.createElement('p');
+//gameResult.textContent = "";
+//notifications.appendChild(gameResult);
+
+//USER AND PC SCORE
+let userScore = document.querySelector('#userScore');
+userScore.textContent = 'USER: 0';
+
+let PCScore = document.querySelector('#PCScore');
+PCScore.textContent = 'USER: 0';
+
+
+
+//Round, Result, RoundWinner, GameWinner
