@@ -5,9 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
+    
+
+<div class="rps">
+    
+    
+    <div class="container">
+        <div>
+            <h1>Rock, Papers, Scissors!</h1>
+        </div>
+        <div class="middle">
+            <div class="user">
+                <img src="./media/user0.png" height="150px" width="150px" alt="userimage" class="userIMG">
+                <div class="userUI">
+                    <p id="userScore">USER: 0</p>
+                    <p id="userChoice"></p>
+                </div>
+            </div>
+            <div class="center">
+                <div class="interactive">
+                    <button id="rock">🪨</button>
+                    <button id="paper">📃</button>
+                    <button id="scissors">✂️</button>
+                </div>
+                <div class="notifications">
+                    <p id="notifier">
+                        Best out of 5. To start, choose your weapon.
+                    </p>
+                </div>
+            </div>
+            <div class="PC">
+                <img src="./media/pc1.png" height="150px" width="150px" alt="userimage" class="PCIMG">
+                <div class="PCUI">
+                    <p id="PCScore">PC: 0</p>
+                    <p id="PCChoice"></p>
+                </div>
+            </div>
+        </div>
+        <div class="credits">
+            Created by Kevin Chaires 2023. The Odin Project.
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
